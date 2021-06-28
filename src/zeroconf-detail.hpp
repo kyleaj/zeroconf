@@ -11,7 +11,7 @@
 #include <memory>
 #include <chrono>
 
-#include "../../../../DeviceConstants.h"
+#include "../../../DeviceConstants.h"
 
 #ifdef WIN32
 #define WIN32_LEAN_AND_MEAN
