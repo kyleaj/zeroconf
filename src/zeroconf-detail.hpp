@@ -11,11 +11,18 @@
 #include <memory>
 #include <chrono>
 
+#include "../../../../DeviceConstants.h"
+
 #ifdef WIN32
 #define WIN32_LEAN_AND_MEAN
 #include <winsock2.h>
 #else
+#ifdef __WIIU__
+#include <arpa/inet.h>
+#include <errno.h>
+#else
 #include <error.h>
+#endif
 #include <string.h>
 #include <unistd.h>
 #include <sys/socket.h>
@@ -80,6 +87,9 @@ namespace Zeroconf
 #ifdef WIN32
             return WSAGetLastError();
 #else
+#ifdef __WIIU__
+            LOG(std::string("Wii U: Socket error not implemented!"));
+#endif
             return errno;
 #endif
         }
